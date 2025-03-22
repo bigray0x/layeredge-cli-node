@@ -55,11 +55,21 @@ fi
 # Create .env file inside the project directory
 echo "Creating .env file..."
 cat <<EOF > .env
-GRPC_URL=34.31.74.109:9090
+# LayerEdge Testnet GRPC URL
+GRPC_URL=grpc.testnet.layeredge.io:9090
+
+# LayerEdge Smart Contract Address
 CONTRACT_ADDR=cosmos1ufs3tlq4umljk0qfe8k5ya0x6hpavn897u2cnf9k0en9jr7qarqqt56709
+
+# ZK Prover Service URL (Choose one)
 ZK_PROVER_URL=http://127.0.0.1:3001
+# ZK_PROVER_URL=https://layeredge.mintair.xyz/
+
+# API Request Settings
 API_REQUEST_TIMEOUT=100
-POINTS_API=http://127.0.0.1:8080
+POINTS_API=https://light-node.layeredge.io
+
+# Private Key
 PRIVATE_KEY=$PRIVATE_KEY
 EOF
 
@@ -68,7 +78,7 @@ chmod 644 .env
 echo "Contents of .env file:"
 cat .env
 
-# Optionally convert to Unix line endings if dos2unix is available
+# Convert to Unix line endings if dos2unix is available
 if command -v dos2unix &>/dev/null; then
     dos2unix .env
 fi
